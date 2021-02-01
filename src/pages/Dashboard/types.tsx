@@ -21,6 +21,28 @@ interface IPokedex {
   url: string
 }
 
+interface TypeBoxProps {
+  name:
+    | 'normal'
+    | 'fire'
+    | 'fighting'
+    | 'water'
+    | 'grass'
+    | 'poison'
+    | 'electric'
+    | 'ground'
+    | 'rock'
+    | 'bug'
+    | 'dragon'
+    | 'ghost'
+    | 'dark'
+    | 'fairy'
+    | 'steel'
+    | 'psychic'
+    | 'ice'
+    | 'flying'
+}
+
 interface IPokemon {
   id: number
   name: string
@@ -37,9 +59,7 @@ interface IPokemon {
   ]
   types: [
     {
-      type: {
-        name: string
-      }
+      type: TypeBoxProps
     }
   ]
   height: number
@@ -110,7 +130,8 @@ const Dashboard: React.FC<void> = () => {
         </div>
       </Header>
 
-      {pokeman !== undefined ? (
+      {pokeman !== undefined
+? (
         <Content>
           <ContentHeader>
             <ContentHeaderTitle>
@@ -137,7 +158,7 @@ const Dashboard: React.FC<void> = () => {
                 <strong>Type</strong>
                 {pokeman.types.map((types, i) => {
                   return (
-                    <TypeDataBox color="ground" key={i}>
+                    <TypeDataBox color={types.type.name} key={i}>
                       {types.type.name}
                     </TypeDataBox>
                   )
@@ -180,7 +201,8 @@ const Dashboard: React.FC<void> = () => {
             </div>
           </ContentBody>
         </Content>
-          ) : (
+      )
+: (
         <Content>
           <ContentHeader>
             <ContentHeaderTitle>
@@ -188,7 +210,7 @@ const Dashboard: React.FC<void> = () => {
             </ContentHeaderTitle>
           </ContentHeader>
         </Content>
-          )}
+      )}
     </Container>
   )
 }
