@@ -1,3 +1,6 @@
+/* eslint-disable camelcase */
+/* eslint-disable no-use-before-define */
+/* eslint-disable multiline-ternary */
 import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import axios from 'axios'
@@ -6,8 +9,6 @@ import {
   Container,
   Header,
   Content,
-  ContentHeader,
-  ContentHeaderTitle,
   ContentBody,
   ContentBox
 } from '../../styles/Dashboard/styles'
@@ -15,6 +16,10 @@ import {
 import Pokeball from '../../assets/logo-pokedex.png'
 
 import TypeDataBox from '../../components/TypeDataBox'
+import ContentWelcome from '../../components/ContentWelcome'
+
+import ContentHeader from '../../components/ContentHeader'
+import ContentBoxImage from '../../components/ContentBoxImage'
 
 interface IPokedex {
   name: string
@@ -88,8 +93,54 @@ const Dashboard: React.FC<void> = () => {
     setPokeman(pokeman)
   }
 
+  function getPokemonsList(pokemons) {
+    return pokemons.map((pokemon, i) => {
+      if (
+        search === '' ||
+        search.includes(pokemon.name) ||
+        search === pokemon.url.slice(34, 37).replace('/', '')
+      ) {
+        return (
+          <span key={i} onClick={() => loadPokemon(i + 1)}>
+            #{(i + 1).toString().padStart(3, '0')} - {pokemon.name}
+          </span>
+        )
+      } else {
+        return null
+      }
+    })
+  }
+
   const handleChange = (e: { target: { value: string } }) => {
     setSearch(e.target.value)
+  }
+
+  function getPokemonsTypes(pokeman) {
+    const pokemanTypes = pokeman.types
+    return (
+      <ul>
+        {pokemanTypes.map((types, i) => (
+          <TypeDataBox color={types.type.name} key={i}>
+            {types.type.name}
+          </TypeDataBox>
+        ))}
+      </ul>
+    )
+  }
+
+  function getPokemonsStats(pokeman) {
+    const pokemanStats = pokeman.stats
+    return (
+      <div>
+        {pokemanStats.map((stats, i) => {
+          return (
+            <span key={i}>
+              {stats.base_stat} {stats.stat.name.substring(0, 5)}
+            </span>
+          )
+        })}
+      </div>
+    )
   }
 
   return (
@@ -109,59 +160,24 @@ const Dashboard: React.FC<void> = () => {
         />
 
         <hr />
-        <div>
-          {pokemons.map((pokemon, i) => {
-            if (
-              search === '' ||
-              search.includes(pokemon.name) ||
-              search === pokemon.url.slice(34, 37).replace('/', '')
-            ) {
-              return (
-                <span
-                  key={i}
-                  // onClick={() => console.log(`${i + 1} - ${pokemon.name}`)}
-                  onClick={() => loadPokemon(i + 1)}
-                >
-                  #{(i + 1).toString().padStart(3, '0')} - {pokemon.name}
-                </span>
-              )
-            }
-          })}
-        </div>
+        <div>{getPokemonsList(pokemons)}</div>
       </Header>
 
       {pokeman !== undefined ? (
         <Content>
-          <ContentHeader>
-            <ContentHeaderTitle>
-              <h1>
-                #{pokeman.id.toString().padStart(3, '0')} - {pokeman.name}
-              </h1>
-              <img src={pokeman.sprites.front_default} alt="" />
-            </ContentHeaderTitle>
-            <div>
-              <p>claro - escuro</p>
-            </div>
-          </ContentHeader>
+          <ContentHeader
+            title={`#${pokeman.id.toString().padStart(3, '0')} - ${
+              pokeman.name
+            }`}
+            image={pokeman.sprites.front_default}
+          />
           <ContentBody>
             <div className="col">
-              <ContentBox>
-                <img
-                  className="img"
-                  src={pokeman.sprites.front_default}
-                  alt=""
-                />
-              </ContentBox>
+              <ContentBoxImage bigImage={pokeman.sprites.front_default} />
 
               <ContentBox>
                 <strong>Type</strong>
-                {pokeman.types.map((types, i) => {
-                  return (
-                    <TypeDataBox color={types.type.name} key={i}>
-                      {types.type.name}
-                    </TypeDataBox>
-                  )
-                })}
+                {getPokemonsTypes(pokeman)}
               </ContentBox>
 
               <div className="hw">
@@ -178,15 +194,7 @@ const Dashboard: React.FC<void> = () => {
               <ContentBox>
                 <div className="stats">
                   <strong>Attributes</strong>
-                  <div>
-                    {pokeman.stats.map((stats, i) => {
-                      return (
-                        <span key={i}>
-                          {stats.base_stat} {stats.stat.name.substring(0, 5)}
-                        </span>
-                      )
-                    })}
-                  </div>
+                  {getPokemonsStats(pokeman)}
                 </div>
               </ContentBox>
             </div>
@@ -200,15 +208,9 @@ const Dashboard: React.FC<void> = () => {
             </div>
           </ContentBody>
         </Content>
-          ) : (
-        <Content>
-          <ContentHeader>
-            <ContentHeaderTitle>
-              <h1>Bem vindo, selecione seu pokemon preferido</h1>
-            </ContentHeaderTitle>
-          </ContentHeader>
-        </Content>
-          )}
+      ) : (
+        <ContentWelcome />
+      )}
     </Container>
   )
 }
