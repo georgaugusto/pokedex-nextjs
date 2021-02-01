@@ -10,7 +10,7 @@ import {
   ContentHeaderTitle,
   ContentBody,
   ContentBox
-} from './styles'
+} from '../../styles/Dashboard/styles'
 
 import Pokeball from '../../assets/logo-pokedex.png'
 
