@@ -9,7 +9,7 @@
   <a href="#Como-contribuir">Como contribuir</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
 
-<p align="center">Status: <span style="color:orange;">Em contrução!</span></p>
+<p align="center">Status: <b>Em contrução!</b></p>
 
 ## Descrição
 <p align="justify">
