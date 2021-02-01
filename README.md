@@ -21,7 +21,8 @@
 <ul>
   <li>Criar as telas de acordo com o Wireframe passado adiante</li>
   <li>Usar NextJS/TypeScript</li>
-  <li>Poderá usar outras bibliotecas adicionais que achar mais interessante para concluir o desafio; As telas precisam estar funcionais</li>
+  <li>Poderá usar outras bibliotecas adicionais que achar mais interessante para concluir o desafio</li>
+  <li>As telas precisam estar funcionais</li>
   <li>Implementar as funcionalidades percebidas nas imagens (à seu critério)</li>
 </ul>
 
