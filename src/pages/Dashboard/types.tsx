@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import axios from 'axios'
 
@@ -10,7 +10,7 @@ import {
   ContentHeaderTitle,
   ContentBody,
   ContentBox
-} from './styles'
+} from '../../styles/pages/Dashboard'
 
 import Pokeball from '../../assets/logo-pokedex.png'
 
@@ -46,7 +46,7 @@ interface IPokemon {
   weight: number
 }
 
-const Dashboard: React.FC = () => {
+const Dashboard: React.FC<void> = () => {
   const [pokemons, setPokemons] = useState<IPokedex[]>([])
   const [pokeman, setPokeman] = useState<IPokemon>()
   const [search, setSearch] = useState('')
@@ -137,7 +137,7 @@ const Dashboard: React.FC = () => {
                 <strong>Type</strong>
                 {pokeman.types.map((types, i) => {
                   return (
-                    <TypeDataBox color={types.type.name} key={i}>
+                    <TypeDataBox color="ground" key={i}>
                       {types.type.name}
                     </TypeDataBox>
                   )

@@ -4,7 +4,6 @@ import { TypeData } from './styles'
 
 interface TypeBoxProps {
   color:
-    | 'default'
     | 'normal'
     | 'fire'
     | 'fighting'

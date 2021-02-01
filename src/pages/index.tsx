@@ -5,7 +5,7 @@ import Pokeball from '../assets/logo-pokedex.png'
 import Settings from '../assets/settings.svg'
 import PokeballContent from '../assets/g60.png'
 
-import { Container, Header, Content } from './styles'
+import { Container, Header, Content } from '../styles/styles'
 
 const Login: React.FC = () => {
   return (

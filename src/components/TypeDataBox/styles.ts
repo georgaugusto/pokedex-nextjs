@@ -1,8 +1,7 @@
 import styled, { css } from 'styled-components'
 
 interface ContainerProps {
-  type?:
-    | 'default'
+  type:
     | 'normal'
     | 'fire'
     | 'fighting'
@@ -24,9 +23,6 @@ interface ContainerProps {
 }
 
 const typesVariations = {
-  default: css`
-    background: #d2d2d2;
-  `,
   normal: css`
     background: #a8a878;
   `,
