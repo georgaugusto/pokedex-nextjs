@@ -10,7 +10,7 @@ import {
   ContentHeaderTitle,
   ContentBody,
   ContentBox
-} from '../../styles/pages/Dashboard'
+} from './styles'
 
 import Pokeball from '../../assets/logo-pokedex.png'
 
@@ -130,8 +130,7 @@ const Dashboard: React.FC<void> = () => {
         </div>
       </Header>
 
-      {pokeman !== undefined
-? (
+      {pokeman !== undefined ? (
         <Content>
           <ContentHeader>
             <ContentHeaderTitle>
@@ -201,8 +200,7 @@ const Dashboard: React.FC<void> = () => {
             </div>
           </ContentBody>
         </Content>
-      )
-: (
+          ) : (
         <Content>
           <ContentHeader>
             <ContentHeaderTitle>
@@ -210,7 +208,7 @@ const Dashboard: React.FC<void> = () => {
             </ContentHeaderTitle>
           </ContentHeader>
         </Content>
-      )}
+          )}
     </Container>
   )
 }
