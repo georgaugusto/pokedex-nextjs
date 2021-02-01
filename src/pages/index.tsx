@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 import Pokeball from '../assets/logo-pokedex.png'
 import Settings from '../assets/settings.svg'
@@ -8,6 +9,13 @@ import PokeballContent from '../assets/g60.png'
 import { Container, Header, Content } from '../styles/styles'
 
 const Login: React.FC = () => {
+  const router = useRouter()
+
+  const handleClick = e => {
+    e.preventDefault()
+    router.push('/Dashboard')
+  }
+
   return (
     <Container>
       <Head>
@@ -19,7 +27,7 @@ const Login: React.FC = () => {
       </Header>
       <Content>
         <img src={PokeballContent} alt="" />
-        <form action="/Dashboard">
+        <form onSubmit={handleClick}>
           <input
             name="email"
             type="email"
