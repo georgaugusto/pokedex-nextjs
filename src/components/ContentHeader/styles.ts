@@ -8,11 +8,25 @@ export const Content = styled.div`
   justify-content: space-between;
 
   margin: 45px 150px;
+
+  @media (max-width: 700px) {
+    margin: 45px 0;
+
+    align-items: center;
+    justify-content: center;
+
+    div p {
+      display: none;
+    }
+  }
 `
 
 export const Title = styled.div`
   display: flex;
   flex-direction: row;
+
+  align-items: center;
+  justify-content: center;
 
   h1 {
     font-style: normal;
@@ -23,5 +37,7 @@ export const Title = styled.div`
 
   img {
     height: 35px;
+
+    padding-left: 5px;
   }
 `

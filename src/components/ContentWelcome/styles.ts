@@ -15,4 +15,8 @@ export const Content = styled.main`
   img {
     padding-bottom: 25px;
   }
+
+  @media (max-width: 700px) {
+    display: none;
+  }
 `

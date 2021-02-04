@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 import Pokeball from '../assets/logo-pokedex.png'
-import Settings from '../assets/settings.svg'
+import Settings from '../assets/settings.png'
 import PokeballContent from '../assets/g60.png'
 
 import { Container, Header, Content } from '../styles/styles'
@@ -24,7 +24,7 @@ const Login: React.FC = () => {
       </Head>
       <Header>
         <img src={Pokeball} alt="" />
-        <img src={Settings} alt="" />
+        <img className="settings" src={Settings} alt="" />
       </Header>
       <Content>
         <img src={PokeballContent} alt="" />

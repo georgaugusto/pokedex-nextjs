@@ -148,7 +148,7 @@ const Dashboard: React.FC<void> = () => {
       <Head>
         <title>Pokedex</title>
       </Head>
-      <Header>
+      <Header className="red">
         <img src={Pokeball} alt="" />
         <p>
           Tudo o que você queria saber sobre seus monstros de bolso favoritos!

@@ -8,11 +8,34 @@ export const Container = styled.div`
   flex-direction: column;
 
   background: #fcfcfc;
+
+  @media (max-width: 700px) {
+    min-width: 333px;
+  }
 `
 export const Header = styled.header`
   width: 100%;
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0px 50px;
 
   background: #c04c4c;
+
+  .settings {
+    width: 25px;
+    height: 25px;
+
+    /* cursor: pointer; */
+  }
+
+  @media (max-width: 700px) {
+    min-width: 333px;
+    padding: 0px 10px;
+  }
 `
 export const Content = styled.main`
   width: 100%;
@@ -59,5 +82,24 @@ export const Content = styled.main`
     color: #000000;
     border: 1px solid #787878;
     background-color: #d4e5ec;
+  }
+
+  @media (max-width: 700px) {
+    min-width: 333px;
+
+    form {
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+
+      input {
+        width: 70%;
+        height: 50px;
+
+        padding: 10px 10px 10px 10px;
+        margin: 30px 0px 0px 0px;
+        border: 1px solid #f5f5f5;
+      }
+    }
   }
 `
