@@ -245,7 +245,9 @@ const Dashboard: React.FC<void> = () => {
           />
           <ContentBody>
             <div className="col">
-              <ContentBoxImage bigImage={pokeman.sprites.front_default} />
+              <ContentBoxImage
+                bigImage={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokeman.id}.png`}
+              />
 
               <ContentBox>
                 <strong>Type</strong>
