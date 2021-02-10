@@ -13,7 +13,7 @@ export const Container = styled.div`
 `
 
 export const Header = styled.header`
-  min-height: 100vh;
+  height: 100vh;
 
   display: flex;
   flex-direction: column;
@@ -97,6 +97,8 @@ export const Header = styled.header`
 
 export const Content = styled.main`
   width: 100%;
+
+  overflow-y: scroll;
   /* display: flex;
   flex-direction: column;
 
@@ -186,11 +188,51 @@ export const ContentBox = styled.div`
       padding: 5px 0px;
 
       span {
+        width: 100px;
+        text-align: center;
         margin: 15px 0px 0px 0px;
-        padding: 5px 60px;
+        padding: 5px 0;
         border-radius: 5px;
-        background-color: #d2d2d2;
+        color: white;
       }
+
+      span:nth-child(1) {
+        background-color: #fe5958;
+      }
+
+      span:nth-child(2) {
+        background-color: #ef995a;
+      }
+
+      span:nth-child(3) {
+        background-color: #f3c819;
+      }
+
+      span:nth-child(4) {
+        background-color: #3d6ee5;
+      }
+
+      span:nth-child(5) {
+        background-color: #7ec560;
+      }
+
+      span:nth-child(6) {
+        background-color: #fb749d;
+      }
+    }
+  }
+
+  .evolution {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+
+    strong {
+      padding-bottom: 10px;
     }
   }
 
@@ -209,4 +251,10 @@ export const ContentBox = styled.div`
       }
     }
   }
+`
+export const PokemonsTypes = styled.ul`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
 `

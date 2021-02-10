@@ -10,7 +10,8 @@ import {
   Header,
   Content,
   ContentBody,
-  ContentBox
+  ContentBox,
+  PokemonsTypes
 } from '../../styles/Dashboard/styles'
 
 import Pokeball from '../../assets/logo-pokedex.png'
@@ -94,6 +95,7 @@ const Dashboard: React.FC<void> = () => {
     async function loadPokemons(): Promise<void> {
       const pokemons = await axios
         .get('https://pokeapi.co/api/v2/pokemon?limit=151')
+        // .get('https://pokeapi.co/api/v2/pokemon?limit=898')
         .then(response => response.data.results)
       setPokemons(pokemons)
     }
@@ -136,7 +138,7 @@ const Dashboard: React.FC<void> = () => {
       <ul>
         {pokemanTypes.map((types, i) => (
           <TypeDataBox color={types.type.name} key={i}>
-            {types.type.name}
+            <span>{types.type.name}</span>
           </TypeDataBox>
         ))}
       </ul>
@@ -180,7 +182,7 @@ const Dashboard: React.FC<void> = () => {
 
   function GetPokemanEvolution() {
     return (
-      <ul>
+      <PokemonsTypes>
         {chain.map((types, i) => (
           <div key={i}>
             <img
@@ -192,7 +194,7 @@ const Dashboard: React.FC<void> = () => {
             <p>{types.name}</p>
           </div>
         ))}
-      </ul>
+      </PokemonsTypes>
     )
   }
 
@@ -238,9 +240,9 @@ const Dashboard: React.FC<void> = () => {
       {pokeman !== undefined ? (
         <Content>
           <ContentHeader
-            title={`#${pokeman.id.toString().padStart(3, '0')} - ${
-              pokeman.name
-            }`}
+            title={`#${pokeman.id
+              .toString()
+              .padStart(3, '0')} - ${pokeman.name.toUpperCase()}`}
             image={''}
           />
           <ContentBody>
@@ -274,12 +276,16 @@ const Dashboard: React.FC<void> = () => {
             </div>
             <div className="col">
               <ContentBox>
-                <p>evolução</p>
-                {GetPokemanEvolution()}
+                <div className="evolution">
+                  <strong>Evolution</strong>
+                  {GetPokemanEvolution()}
+                </div>
               </ContentBox>
               <ContentBox>
-                <p>descrção</p>
-                {GetFlavorText()}
+                <div className="description">
+                  <strong>Description</strong>
+                  {GetFlavorText()}
+                </div>
               </ContentBox>
             </div>
           </ContentBody>

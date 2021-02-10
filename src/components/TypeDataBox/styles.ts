@@ -86,4 +86,8 @@ export const TypeData = styled.span<ContainerProps>`
   border-radius: 10%;
   text-transform: uppercase;
   ${props => typesVariations[props.type || 'default']};
+
+  span {
+    width: 30px;
+  }
 `
