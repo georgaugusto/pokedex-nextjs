@@ -30,6 +30,10 @@
   <li>Implementar as funcionalidades percebidas nas imagens (à seu critério)</li>
 </ul>
 
+### Template
+
+[Wireframe](https://www.figma.com/file/CyO3DAXPZJMoMDzWGSF2iG/Pokedex?node-id=9%3A141)
+
 ## Preview
 Para ver o **Pokedex**, clique aqui: [Pokedex - NextJs](https://pokedex-nextjs.netlify.app/)</br>
 
@@ -50,10 +54,6 @@ Para ver o **Pokedex**, clique aqui: [Pokedex - NextJs](https://pokedex-nextjs.n
 - [Eslint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
 - [EditorConfig](https://editorconfig.org/)
-
-### Template
-
-Pensando em Usabilidade e UX Design foi feito um protótipo do site utilizando a ferramenta [Figma](https://www.figma.com/file/CyO3DAXPZJMoMDzWGSF2iG/Pokedex?node-id=9%3A141)
 
 ## Como rodar localmente
 
