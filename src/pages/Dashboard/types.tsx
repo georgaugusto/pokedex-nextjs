@@ -71,10 +71,24 @@ interface IPokemon {
   weight: number
 }
 
+interface ISpecies {
+  evolution_chain: {
+    url: string
+  }
+  flavor_text_entries: [
+    {
+      flavor_text: string
+    }
+  ]
+  id: number
+}
+
 const Dashboard: React.FC<void> = () => {
   const [pokemons, setPokemons] = useState<IPokedex[]>([])
   const [pokeman, setPokeman] = useState<IPokemon>()
+  const [species, setSpecies] = useState<ISpecies>()
   const [search, setSearch] = useState('')
+  const [chain, setChain] = useState<IPokedex[]>([])
 
   useEffect(() => {
     async function loadPokemons(): Promise<void> {
@@ -90,6 +104,7 @@ const Dashboard: React.FC<void> = () => {
     const pokeman = await axios
       .get(`https://pokeapi.co/api/v2/pokemon/${n}`)
       .then(response => response.data)
+    getPokemonSpecies(n)
     setPokeman(pokeman)
   }
 
@@ -135,13 +150,71 @@ const Dashboard: React.FC<void> = () => {
         {pokemanStats.map((stats, i) => {
           return (
             <span key={i}>
-              {stats.base_stat} {stats.stat.name.substring(0, 5)}
+              {stats.base_stat}{' '}
+              {stats.stat.name
+                .replace('attack', 'atk')
+                .replace('defense', 'def')
+                .replace('special', 'sp')
+                .toUpperCase()}
             </span>
           )
         })}
       </div>
     )
   }
+
+  async function getPokemonSpecies(n: number): Promise<void> {
+    const pokemonSpecies: ISpecies = await axios
+      .get(`https://pokeapi.co/api/v2/pokemon-species/${n}`)
+      .then(response => response.data)
+    GetEvolutionChain(pokemonSpecies.evolution_chain.url)
+    setSpecies(pokemonSpecies)
+  }
+
+  async function GetEvolutionChain(url): Promise<void> {
+    const evolutionUrl = await axios
+      .get(`${url}`)
+      .then(response => response.data)
+    setChain(makePokeList(evolutionUrl))
+  }
+
+  function GetPokemanEvolution() {
+    return (
+      <ul>
+        {chain.map((types, i) => (
+          <div key={i}>
+            <img
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${types.url
+                .substring(42, 47)
+                .replace(/\D/g, '')}.png`}
+              alt=""
+            />
+            <p>{types.name}</p>
+          </div>
+        ))}
+      </ul>
+    )
+  }
+
+  function GetFlavorText() {
+    return species !== undefined ? (
+      <p>
+        {species.flavor_text_entries[0].flavor_text.replace(/\r?\f|\r/, ' ')}
+      </p>
+    ) : (
+      ''
+    )
+  }
+
+  const depthFirst = getChildren => node => [
+    node,
+    ...(getChildren(node) || []).flatMap(depthFirst(getChildren))
+  ]
+
+  const makePokeList = pokes =>
+    depthFirst(node => node.evolves_to)(pokes.chain).map(
+      ({ species }) => species
+    )
 
   return (
     <Container>
@@ -158,7 +231,6 @@ const Dashboard: React.FC<void> = () => {
           onChange={handleChange}
           placeholder="Search for Pokémon"
         />
-
         <hr />
         <div>{getPokemonsList(pokemons)}</div>
       </Header>
@@ -169,7 +241,7 @@ const Dashboard: React.FC<void> = () => {
             title={`#${pokeman.id.toString().padStart(3, '0')} - ${
               pokeman.name
             }`}
-            image={pokeman.sprites.front_default}
+            image={''}
           />
           <ContentBody>
             <div className="col">
@@ -201,9 +273,11 @@ const Dashboard: React.FC<void> = () => {
             <div className="col">
               <ContentBox>
                 <p>evolução</p>
+                {GetPokemanEvolution()}
               </ContentBox>
               <ContentBox>
                 <p>descrção</p>
+                {GetFlavorText()}
               </ContentBox>
             </div>
           </ContentBody>

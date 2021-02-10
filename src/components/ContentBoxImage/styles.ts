@@ -11,7 +11,7 @@ export const ContentBox = styled.div`
   margin-bottom: 30px;
 
   img {
-    width: 250px;
+    max-width: 250px;
 
     margin: 0 auto;
   }

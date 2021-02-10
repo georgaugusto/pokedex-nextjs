@@ -7,7 +7,7 @@ export const Content = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  margin: 45px 150px;
+  margin: 45px 50px;
 
   @media (max-width: 700px) {
     margin: 45px 0;
