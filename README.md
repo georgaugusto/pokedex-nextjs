@@ -21,8 +21,8 @@
 </p>
 
 <ul>
-  <li>Criar as telas de acordo com o Wireframe</li>
-  <li>Utilizar PokéAPI[PokéAPI](https://pokeapi.co/docs/v2)</li>
+  <li>Criar as telas de acordo com o Wireframe passado</li>
+  <li>Utilizar PokéAPI</li>
   <li>Usar NextJS/TypeScript</li>
   <li>Poderá usar outras bibliotecas adicionais que achar mais interessante para concluir o desafio</li>
   <li>As telas precisam estar funcionais</li>
