@@ -53,6 +53,27 @@ Para ver o **Pokedex**, clique aqui: [Pokedex - NextJs](https://pokedex-nextjs.n
 
 Pensando em Usabilidade e UX Design foi feito um protótipo do site utilizando a ferramenta [Figma](https://www.figma.com/file/CyO3DAXPZJMoMDzWGSF2iG/Pokedex?node-id=9%3A141)
 
+## Como rodar localmente
+
+Para rodar o projeto localmente você precisa seguir os passos abaixo!
+
+**Clone o projeto e acesse a pasta**
+
+
+```bash
+$ git clone https://github.com/georgaugusto/pokedex-nextjs.git && cd pokedex-nextjs
+```
+
+**Siga os passos abaixo para instalar as dependencias e rodar o projeto**
+
+```bash
+# Instale as dependências
+$ yarn install ou npm install
+
+# Para terminar, inicie o cliente
+$ yarn dev ou npm dev
+```
+
 ## Como contribuir
 
 **Faça um fork deste repositório**
