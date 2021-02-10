@@ -21,7 +21,8 @@
 </p>
 
 <ul>
-  <li>Criar as telas de acordo com o Wireframe passado adiante</li>
+  <li>Criar as telas de acordo com o Wireframe</li>
+  <li>Utilizar PokéAPI</li>
   <li>Usar NextJS/TypeScript</li>
   <li>Poderá usar outras bibliotecas adicionais que achar mais interessante para concluir o desafio</li>
   <li>As telas precisam estar funcionais</li>
@@ -29,7 +30,6 @@
 </ul>
 
 ## Preview
-
 Para ver o **Pokedex**, clique aqui: [Pokedex - NextJs](https://pokedex-nextjs.netlify.app/)</br>
 
 ## Tecnologias
@@ -41,6 +41,7 @@ Para ver o **Pokedex**, clique aqui: [Pokedex - NextJs](https://pokedex-nextjs.n
 - [Styled Components](https://styled-components.com/)
 - [Polished](https://github.com/styled-components/polished)
 - [Axios](https://github.com/axios/axios)
+- [PokéAPI](https://pokeapi.co/docs/v2)
 
 **Padronização de código:**
 - [Commitlint](https://github.com/conventional-changelog/commitlint)
